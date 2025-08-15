@@ -51,4 +51,7 @@ function showAllTasks() {
       columns[task.status].appendChild(div);
     }
   });
+
+  updateColumnCounts();
+  saveTasks(tasks);
 }
