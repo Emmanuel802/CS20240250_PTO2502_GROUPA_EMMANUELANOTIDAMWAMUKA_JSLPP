@@ -91,4 +91,6 @@ export function openNewTaskModal(onCreate) {
       </div>
     </div>
   `;
+
+  document.body.appendChild(backdrop);
 }
