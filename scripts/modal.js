@@ -66,6 +66,14 @@ export function openEditModal(task, onSave, onDelete) {
   };
 }
 
+/**
+ * Opens a modal to create a new task.
+ * The modal HTML is created dynamically and appended to the document body.
+ * When the create button is clicked, the onCreate callback is called with the new task object.
+ *
+ * @param {function(Object): void} onCreate - Callback called when a new task is created.
+ * The new task object contains id, title, description, and status properties.
+ */
 export function openNewTaskModal(onCreate) {
   const backdrop = document.createElement("div");
   backdrop.className = "modal-backdrop";
