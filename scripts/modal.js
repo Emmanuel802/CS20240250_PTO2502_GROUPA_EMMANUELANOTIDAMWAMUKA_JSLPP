@@ -36,8 +36,8 @@ export function openEditModal(task, onSave, onDelete) {
           }>Done</option>
         </select>
         <div style="margin-top: 15px;">
-          <button id="save-button">Save</button>
-          <button id="delete-button" style="background-color: red; margin-left: 10px;">Delete</button>
+          <button id="save-button">Save Changes</button>
+          <button id="delete-button" style="background-color: red; margin-left: 10px;">Delete Task</button>
         </div>
       </div>
     </div>
