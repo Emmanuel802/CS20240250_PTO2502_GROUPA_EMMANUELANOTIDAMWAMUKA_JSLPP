@@ -35,7 +35,7 @@ export function openEditModal(task, onSave, onDelete) {
             task.status === "done" ? "selected" : ""
           }>Done</option>
         </select>
-        <div style="margin-top: 15px;">
+        <div class: "button-container" style="margin-top: 15px;">
           <button id="save-button">Save Changes</button>
           <button id="delete-button" style="background-color: red; margin-left: 10px;">Delete Task</button>
         </div>
@@ -92,7 +92,7 @@ export function openNewTaskModal(onCreate) {
           <option value="doing">Doing</option>
           <option value="done">Done</option>
         </select>
-        <div style="margin-top: 15px;">
+        <div class: "button-container" style="margin-top: 15px;">
           <button id="create-button">Create Task</button>
           <button id="cancel-button" style="margin-left: 10px;">Cancel</button>
         </div>
