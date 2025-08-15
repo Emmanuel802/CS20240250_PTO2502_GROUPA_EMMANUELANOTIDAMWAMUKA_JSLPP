@@ -65,3 +65,30 @@ export function openEditModal(task, onSave, onDelete) {
     }
   };
 }
+
+export function openNewTaskModal(onCreate) {
+  const backdrop = document.createElement("div");
+  backdrop.className = "modal-backdrop";
+
+  backdrop.innerHTML = `
+    <div class="modal">
+      <button class="close-button">&times;</button>
+      <div class="modal-content">
+        <label>Title</label>
+        <input type="text" id="new-title" placeholder="Enter task title" />
+        <label>Description</label>
+        <textarea id="new-description" placeholder="Enter task description"></textarea>
+        <label>Status</label>
+        <select id="new-status">
+          <option value="todo">To Do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
+        <div style="margin-top: 15px;">
+          <button id="create-button">Create Task</button>
+          <button id="cancel-button" style="margin-left: 10px;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
