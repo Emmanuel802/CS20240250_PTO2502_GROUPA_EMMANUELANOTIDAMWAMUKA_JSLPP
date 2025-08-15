@@ -37,4 +37,11 @@ function showAllTasks() {
 
   // Clear existing tasks in all columns
   Object.values(columns).forEach((col) => (col.innerHTML = ""));
+
+  // Render tasks
+  tasks.forEach((task) => {
+    const div = document.createElement("div");
+    div.className = "task-div";
+    div.textContent = task.title;
+  });
 }
