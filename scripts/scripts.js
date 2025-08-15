@@ -43,5 +43,12 @@ function showAllTasks() {
     const div = document.createElement("div");
     div.className = "task-div";
     div.textContent = task.title;
+    div.onclick = () => {
+      openEditModal(task, handleSave, handleDelete);
+    };
+
+    if (columns[task.status]) {
+      columns[task.status].appendChild(div);
+    }
   });
 }
