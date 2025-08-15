@@ -302,6 +302,7 @@ h2 {
 /* Save button */
 #save-button,
 #create-button {
+  width: 200px;
   background-color: #635fc7;
   color: #fff;
   border: none;
@@ -314,6 +315,7 @@ h2 {
 }
 
 #cancel-button {
+  width: 200px;
   background-color: rgb(85, 85, 85);
   color: #fff;
   border: none;
@@ -365,7 +367,7 @@ h2 {
   background-color: var(--primary-color);
   border-radius: 12px;
   box-shadow: var(--primary-box-shadow);
-  width: 80%;
+  width: 100%;
   max-width: 600px;
   padding: 20px;
   position: relative; /* For close button positioning */
@@ -419,6 +421,47 @@ textarea {
 
 select {
   cursor: pointer;
+}
+
+/* Save button */
+#save-button,
+#create-button {
+  width: 200px;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+#cancel-button {
+  width: 200px;
+  background-color: rgb(85, 85, 85);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+#delete-button {
+  width: 200px;
+  background-color: #ea5555;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
 }
 
 /* ========================
