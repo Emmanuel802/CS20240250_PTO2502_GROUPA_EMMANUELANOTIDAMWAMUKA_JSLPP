@@ -27,3 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function showAllTasks() {
+  const columns = {
+    todo: document.querySelector('[data-status="todo"] .tasks-container'),
+    doing: document.querySelector('[data-status="doing"] .tasks-container'),
+    done: document.querySelector('[data-status="done"] .tasks-container'),
+  };
+}
