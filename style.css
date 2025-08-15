@@ -142,15 +142,72 @@ h4 {
   border-radius: 50%;
 }
 
-/* Light and dark themes */
-body.light-theme {
-  background-color: white;
-  color: black;
+nav.dark-mode {
+  background-color: #20212c;
+  color: #ffffff;
 }
 
-body.dark-theme {
+body.dark-mode {
   background-color: #20212c;
-  color: white;
+  color: #ffffff;
+}
+
+/* General background and text color */
+body.dark-mode {
+  background-color: #20212c;
+  color: #ffffff;
+}
+
+/* Sidebar */
+body.dark-mode .side-bar {
+  background-color: #2b2c37;
+}
+
+/* Buttons */
+body.dark-mode .board-btn,
+body.dark-mode .add-task-btn,
+body.dark-mode .hide-sidebar-btn,
+body.dark-mode .show-sidebar-btn {
+  background-color: #635fc7;
+  color: #ffffff;
+}
+
+/* Column containers */
+body.dark-mode .column-div {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Column headers */
+body.dark-mode .column-head-div {
+  color: #ffffff;
+}
+
+body.dark-mode .tasks-container {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Mobile menu */
+body.dark-mode .mobile-menu {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Header */
+body.dark-mode .sticky-header {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Modals (optional) */
+body.dark-mode .modal-container {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #635fc7;
+  color: #ffffff;
 }
 
 .hide-sidebar-btn {
