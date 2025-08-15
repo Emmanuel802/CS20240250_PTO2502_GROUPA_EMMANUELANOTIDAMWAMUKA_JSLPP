@@ -17,7 +17,7 @@ export function openEditModal(task, onSave, onDelete) {
 
   backdrop.innerHTML = `
     <div class="modal">
-      <button class="close-button">&times;</button>
+      <button id="close-button">&times;</button>
       <div class="modal-content">
         <label>Title</label>
         <input type="text" id="modal-title" value="${task.title}" />
@@ -45,7 +45,7 @@ export function openEditModal(task, onSave, onDelete) {
 
   document.body.appendChild(backdrop);
 
-  backdrop.querySelector(".close-button").onclick = () => backdrop.remove();
+  backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
 
   backdrop.querySelector("#save-button").onclick = () => {
     const updated = {
@@ -80,7 +80,7 @@ export function openNewTaskModal(onCreate) {
 
   backdrop.innerHTML = `
     <div class="modal">
-      <button class="close-button">&times;</button>
+      <button id="close-button">&times;</button>
       <div class="modal-content">
         <label>Title</label>
         <input type="text" id="new-title" placeholder="Enter task title" />
@@ -102,7 +102,7 @@ export function openNewTaskModal(onCreate) {
 
   document.body.appendChild(backdrop);
 
-  backdrop.querySelector(".close-button").onclick = () => backdrop.remove();
+  backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
   backdrop.querySelector("#cancel-button").onclick = () => backdrop.remove();
 
   backdrop.querySelector("#create-button").onclick = () => {
