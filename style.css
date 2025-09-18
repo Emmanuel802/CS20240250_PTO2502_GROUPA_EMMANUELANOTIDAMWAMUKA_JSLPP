@@ -1,0 +1,621 @@
+/* ========================
+   Global & Root Variables
+======================== */
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in total element size */
+}
+
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f4f7fd;
+  --primary-font-color: #000000;
+  --secondary-font-color: #828fa3;
+  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
+  --sidebar-width: 300px; /* Sidebar fixed width */
+}
+
+/* ================
+   Base Elements
+================ */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex; /* Allow layout to span horizontally */
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--secondary-color);
+  font-size: 1rem; /* Base font size for rem scaling */
+}
+
+/* ================
+   Sidebar Layout
+================ */
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  border-right: 1px solid #e4ebfa; /* Light divider */
+  width: var(--sidebar-width);
+  height: 100vh;
+}
+
+#side-logo-div {
+  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  display: flex;
+  justify-content: flex-start;
+}
+
+#logo {
+  width: 100%; /* Make logo responsive within container */
+}
+
+.boards-nav-links-div {
+  display: flex;
+  flex-direction: column;
+  color: var(--primary-font-color);
+}
+
+#headline-sidepanel {
+  padding: 0 12px 0 50px; /* Aligns section content from left and right */
+}
+
+h4 {
+  color: var(--secondary-font-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem; /* Makes heading more spaced */
+}
+
+.board-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden; /* Prevents overflowed text/icons from showing */
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 251px;
+  height: 48px;
+  background-color: #f4f7fd;
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #635fc7;
+  border-radius: 34px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* When checked */
+.switch input:checked + .slider {
+  background-color: black;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* Optional: rounded style */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round::before {
+  border-radius: 50%;
+}
+
+nav.dark-mode {
+  background-color: #20212c;
+  color: #ffffff;
+}
+
+body.dark-mode {
+  background-color: #20212c;
+  color: #ffffff;
+}
+
+/* General background and text color */
+body.dark-mode {
+  background-color: #20212c;
+  color: #ffffff;
+}
+
+/* Sidebar */
+body.dark-mode .side-bar {
+  background-color: #2b2c37;
+}
+
+/* Buttons */
+body.dark-mode .board-btn,
+body.dark-mode .add-task-btn,
+body.dark-mode .hide-sidebar-btn,
+body.dark-mode .show-sidebar-btn {
+  background-color: #635fc7;
+  color: #ffffff;
+}
+
+/* Column containers */
+body.dark-mode .column-div {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Column headers */
+body.dark-mode .column-head-div {
+  color: #ffffff;
+}
+
+body.dark-mode .tasks-container {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Mobile menu */
+body.dark-mode .mobile-menu {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Header */
+body.dark-mode .sticky-header {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+/* Modals (optional) */
+body.dark-mode .modal-container {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #635fc7;
+  color: #ffffff;
+}
+
+.hide-sidebar-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  background-color: #f4f7fd;
+  color: #635fc7;
+  border: none;
+  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  margin: 10px 0;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden; /* Prevents overflowed text/icons from showing */
+}
+
+/* ===============
+   Main Layout
+================ */
+#layout {
+  flex: 1; /* Fills remaining space beside sidebar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+}
+
+/* ===============
+   Header Section
+================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  height: 96px;
+  padding: 0 35px 0 30px;
+  border-bottom: 1px solid #e4ebfa;
+  width: 100%;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+.header-name-div {
+  display: flex;
+  align-items: center;
+}
+
+.logo-mobile {
+  display: none; /* Hidden on desktop; shown on smaller screens */
+}
+
+/* ===============
+   Board Columns
+================ */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  box-sizing: border-box;
+}
+
+.card-column-main {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 304px)
+  ); /* 3 columns with min size */
+  gap: 8px; /* Space between columns */
+}
+
+.column-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
+}
+
+.column-head-div {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between dot and column title */
+}
+
+.columnHeader {
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  color: var(--secondary-font-color);
+  margin: 0;
+}
+
+/* Status Dots */
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%; /* Make it circular */
+  display: inline-block;
+}
+
+#todo-dot {
+  background-color: #49c4e5;
+}
+
+#doing-dot {
+  background-color: #8471f2;
+}
+
+#done-dot {
+  background-color: #219c90;
+}
+
+/* ===============
+   Task Cards
+================ */
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-div {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  border-radius: 12px;
+  box-shadow: var(--primary-box-shadow);
+  cursor: pointer; /* Indicate it's clickable */
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+}
+
+/* ===============
+   Headings
+================ */
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Save button */
+#save-button,
+#create-button {
+  width: 200px;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+#cancel-button {
+  width: 200px;
+  background-color: rgb(85, 85, 85);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+/*Add Task Button */
+.add-task-btn {
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 18px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background-color: #a8a4ff; /* Lighter purple on hover */
+}
+
+/* ========================
+   Modal Styles
+======================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+}
+
+.modal {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  box-shadow: var(--primary-box-shadow);
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  position: relative; /* For close button positioning */
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ea5555;
+}
+
+.close-button:hover {
+  transform: scale(1.15);
+  font-weight: 600;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+/* Form elements */
+label {
+  font-weight: bold;
+  color: var(--primary-font-color);
+}
+
+input[type="text"],
+textarea,
+select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px;
+}
+
+select {
+  cursor: pointer;
+}
+
+/* Save button */
+#save-button,
+#create-button {
+  width: 200px;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+#cancel-button {
+  width: 200px;
+  background-color: rgb(85, 85, 85);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+#delete-button {
+  width: 200px;
+  background-color: #ea5555;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  height: 40px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+/* ========================
+   Responsive Styles
+======================== */
+
+/******** Tablets ********/
+@media screen and (max-width: 1023px) {
+  .side-bar {
+    display: none; /* Hide sidebar on tablets and smaller */
+  }
+
+  .side-bar.show-sidebar {
+    display: flex !important;
+    position: fixed; /* Overlay on top of page */
+    height: auto;
+  }
+
+  #side-logo-div {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  body {
+    font-size: 0.8rem;
+  }
+
+  .board-btn {
+    font-size: 0.8rem;
+    padding-left: 15px;
+    margin-right: 15px;
+    font-weight: 700;
+  }
+
+  .container {
+    padding: 0;
+    width: 100%;
+    align-items: center; /* Center columns on smaller screens */
+  }
+
+  .card-column-main {
+    grid-template-columns: repeat(2, minmax(0, 360px));
+    gap: 8px;
+  }
+
+  header {
+    height: 64px;
+    padding: 0 10px 0 18px;
+    border: none;
+  }
+
+  #header-board-name {
+    font-size: 1rem;
+  }
+
+  .task-div {
+    width: 100%;
+  }
+
+  .columnHeader {
+    font-size: 0.75rem;
+  }
+
+  .dot {
+    height: 8px;
+    width: 8px;
+  }
+
+  .column-head-div {
+    gap: 8px;
+  }
+
+  .column-div {
+    width: 100%;
+  }
+}
+
+/******** Mobile ********/
+@media screen and (max-width: 576px) {
+  .card-column-main {
+    grid-template-columns: minmax(
+      0,
+      380px
+    ); /* Stack columns in single column */
+  }
+
+  .column-div {
+    padding: 24px;
+  }
+
+  .btn-text {
+    display: none;
+  }
+}
