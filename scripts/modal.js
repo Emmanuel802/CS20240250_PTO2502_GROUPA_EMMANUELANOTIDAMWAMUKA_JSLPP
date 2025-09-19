@@ -101,4 +101,7 @@ export function openNewTaskModal(onCreate) {
   `;
 
   document.body.appendChild(backdrop);
+
+  backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
+  backdrop.querySelector("#cancel-button").onclick = () => backdrop.remove();
 }
