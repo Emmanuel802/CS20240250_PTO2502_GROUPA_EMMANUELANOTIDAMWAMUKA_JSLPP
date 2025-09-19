@@ -44,4 +44,6 @@ export function openEditModal(task, onSave, onDelete) {
   `;
 
   document.body.appendChild(backdrop);
+
+  backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
 }
