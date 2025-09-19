@@ -28,3 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/**
+ * Renders all tasks inside their respective columns (TODO, DOING, DONE),
+ * clears previous content and adds click listeners to open edit modal.
+ * Saves the updated task list to localStorage.
+ */
+function showAllTasks() {
+  const columns = {
+    todo: document.querySelector('[data-status="todo"] .tasks-container'),
+    doing: document.querySelector('[data-status="doing"] .tasks-container'),
+    done: document.querySelector('[data-status="done"] .tasks-container'),
+  };
+}
