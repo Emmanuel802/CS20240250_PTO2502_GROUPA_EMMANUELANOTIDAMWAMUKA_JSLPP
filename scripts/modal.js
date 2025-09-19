@@ -104,4 +104,29 @@ export function openNewTaskModal(onCreate) {
 
   backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
   backdrop.querySelector("#cancel-button").onclick = () => backdrop.remove();
+
+  backdrop.querySelector("#create-button").onclick = () => {
+    const title = document.getElementById("new-title").value.trim();
+    const description = document.getElementById("new-description").value.trim();
+    const status = document.getElementById("new-status").value;
+
+    if (!title) {
+      alert("Please enter a title.");
+      return;
+    }
+
+    if (!description) {
+      alert("Please enter a description.");
+      return;
+    }
+
+    onCreate({
+      id: Date.now(), // Simple ID generation based on timestamp
+      title,
+      description,
+      status,
+    });
+
+    backdrop.remove();
+  };
 }
