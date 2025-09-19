@@ -40,4 +40,7 @@ function showAllTasks() {
     doing: document.querySelector('[data-status="doing"] .tasks-container'),
     done: document.querySelector('[data-status="done"] .tasks-container'),
   };
+
+  // Clear existing tasks in all columns
+  Object.values(columns).forEach((col) => (col.innerHTML = ""));
 }
