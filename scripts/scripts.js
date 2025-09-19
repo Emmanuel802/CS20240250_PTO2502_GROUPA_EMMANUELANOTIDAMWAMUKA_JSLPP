@@ -43,4 +43,21 @@ function showAllTasks() {
 
   // Clear existing tasks in all columns
   Object.values(columns).forEach((col) => (col.innerHTML = ""));
+
+  // Render tasks
+  tasks.forEach((task) => {
+    const div = document.createElement("div");
+    div.className = "task-div";
+    div.textContent = task.title;
+    div.onclick = () => {
+      openEditModal(task, handleSave, handleDelete);
+    };
+
+    if (columns[task.status]) {
+      columns[task.status].appendChild(div);
+    }
+  });
+
+  updateColumnCounts();
+  saveTasks(tasks);
 }
