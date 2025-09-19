@@ -75,3 +75,14 @@ function handleSave(updatedTask) {
     showAllTasks();
   }
 }
+
+/**
+ * Handler called when a task is deleted from the edit modal.
+ * Removes the task from the tasks array and re-renders the task list.
+ *
+ * @param {number} taskId - The id of the task to delete
+ */
+function handleDelete(taskId) {
+  tasks = tasks.filter((t) => t.id !== taskId);
+  showAllTasks();
+}
