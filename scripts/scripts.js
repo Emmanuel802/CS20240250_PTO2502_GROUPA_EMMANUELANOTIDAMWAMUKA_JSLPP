@@ -61,3 +61,17 @@ function showAllTasks() {
   updateColumnCounts();
   saveTasks(tasks);
 }
+
+/**
+ * Handler called when a task is saved from the edit modal.
+ * Updates the task in the tasks array and re-renders the task list.
+ *
+ * @param {Object} updatedTask - Task object with updated properties
+ */
+function handleSave(updatedTask) {
+  const index = tasks.findIndex((t) => t.id === updatedTask.id);
+  if (index !== -1) {
+    tasks[index] = updatedTask;
+    showAllTasks();
+  }
+}
