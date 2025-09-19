@@ -57,4 +57,11 @@ export function openEditModal(task, onSave, onDelete) {
     onSave(updated);
     backdrop.remove();
   };
+
+  backdrop.querySelector("#delete-button").onclick = () => {
+    if (confirm("Are you sure you want to delete this task?")) {
+      onDelete(task.id);
+      backdrop.remove();
+    }
+  };
 }
