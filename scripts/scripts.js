@@ -86,3 +86,21 @@ function handleDelete(taskId) {
   tasks = tasks.filter((t) => t.id !== taskId);
   showAllTasks();
 }
+
+/**
+ * Updates the task count display for each column (TODO, DOING, DONE).
+ */
+function updateColumnCounts() {
+  const countByStatus = (status) =>
+    tasks.filter((t) => t.status === status).length;
+
+  document.getElementById("toDoText").textContent = `TODO (${countByStatus(
+    "todo"
+  )})`;
+  document.getElementById("doingText").textContent = `DOING (${countByStatus(
+    "doing"
+  )})`;
+  document.getElementById("doneText").textContent = `DONE (${countByStatus(
+    "done"
+  )})`;
+}
