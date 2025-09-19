@@ -46,4 +46,15 @@ export function openEditModal(task, onSave, onDelete) {
   document.body.appendChild(backdrop);
 
   backdrop.querySelector("#close-button").onclick = () => backdrop.remove();
+
+  backdrop.querySelector("#save-button").onclick = () => {
+    const updated = {
+      ...task,
+      title: document.getElementById("modal-title").value.trim(),
+      description: document.getElementById("modal-description").value.trim(),
+      status: document.getElementById("modal-status").value,
+    };
+    onSave(updated);
+    backdrop.remove();
+  };
 }
