@@ -40,3 +40,14 @@ showSidebarBtn.addEventListener("click", () => {
 });
 
 updateSidebarDisplay();
+
+// ======================
+// Mobile Menu Logic
+// ======================
+logoMobile.addEventListener("click", () => {
+  mobileMenu.style.display = "block";
+});
+
+closeMobileMenuBtn.addEventListener("click", () => {
+  mobileMenu.style.display = "none";
+});
