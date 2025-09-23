@@ -51,3 +51,36 @@ logoMobile.addEventListener("click", () => {
 closeMobileMenuBtn.addEventListener("click", () => {
   mobileMenu.style.display = "none";
 });
+
+// ======================
+// Theme Toggle Sync (Desktop + Mobile)
+// ======================
+function setTheme(darkMode) {
+  if (darkMode) {
+    document.body.classList.add("dark-mode");
+    themeSwitch.checked = true;
+    mobileThemeSwitch.checked = true;
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark-mode");
+    themeSwitch.checked = false;
+    mobileThemeSwitch.checked = false;
+    localStorage.setItem("theme", "light");
+  }
+}
+
+themeSwitch.addEventListener("change", () => {
+  setTheme(themeSwitch.checked);
+});
+
+mobileThemeSwitch.addEventListener("change", () => {
+  setTheme(mobileThemeSwitch.checked);
+});
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  setTheme(true);
+} else {
+  setTheme(false);
+}
