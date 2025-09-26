@@ -1,23 +1,30 @@
-import { initialData } from "./initialData.js";
 import { saveTasks, loadTasks } from "./localStorage.js";
 import { openEditModal, openNewTaskModal } from "./modal.js";
 
 /**
- * @type {Array<Object>} tasks
- * This holds the current list of tasks in memory.
- * It first tries to load from localStorage;
- * if none exist, it falls back to the initialData array.
+ * List of tasks stored in memory
+ * @type {Array<Object>}
  */
-let tasks = loadTasks() || initialData;
+let tasks = [];
 
 /**
- * Initialize the app after the DOM is fully loaded:
- * - Show all tasks on the board
- * - Set up the "Add Task" button click event
+ * Initialize the app on DOMContentLoaded
  */
-document.addEventListener("DOMContentLoaded", () => {
-  showAllTasks(); // Render all tasks in their columns
+document.addEventListener("DOMContentLoaded", async () => {
+  showLoadingMessage();
 
+  try {
+    tasks = await fetchTasksFromAPI();
+    sortTasksByPriority();
+  } catch (err) {
+    showErrorMessage("Failed to fetch tasks. Please try again.");
+    console.error(err);
+    return;
+  }
+
+  showAllTasks();
+
+  // Add Task button
   const addTaskBtn = document.getElementById("add-task-btn");
   if (addTaskBtn) {
     addTaskBtn.addEventListener("click", () => {
