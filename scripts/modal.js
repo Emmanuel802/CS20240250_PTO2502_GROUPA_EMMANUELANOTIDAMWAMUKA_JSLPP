@@ -35,7 +35,19 @@ export function openEditModal(task, onSave, onDelete) {
             task.status === "done" ? "selected" : ""
           }>Done</option>
         </select>
-        <div class:"button-container" style="margin-top: 15px; display: flex; justify-content: space-evenly;">
+        <label>Priority</label>
+        <select id="modal-priority">
+          <option value="high" ${
+            task.priority === "high" ? "selected" : ""
+          }>High</option>
+          <option value="medium" ${
+            task.priority === "medium" ? "selected" : ""
+          }>Medium</option>
+          <option value="low" ${
+            task.priority === "low" ? "selected" : ""
+          }>Low</option>
+        </select>
+        <div class="button-container" style="margin-top: 15px; display: flex; justify-content: space-evenly;">
           <button id="save-button">Save Changes</button>
           <button id="delete-button" style="margin-left: 10px;">Delete Task</button>
         </div>
@@ -53,6 +65,7 @@ export function openEditModal(task, onSave, onDelete) {
       title: document.getElementById("modal-title").value.trim(),
       description: document.getElementById("modal-description").value.trim(),
       status: document.getElementById("modal-status").value,
+      priority: document.getElementById("modal-priority").value,
     };
     onSave(updated);
     backdrop.remove();
@@ -92,7 +105,13 @@ export function openNewTaskModal(onCreate) {
           <option value="doing">Doing</option>
           <option value="done">Done</option>
         </select>
-        <div class:"button-container" style="margin-top: 15px; display: flex; justify-content: space-evenly;">
+        <label>Priority</label>
+        <select id="new-priority">
+          <option value="high">High</option>
+          <option value="medium" selected>Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <div class="button-container" style="margin-top: 15px; display: flex; justify-content: space-evenly;">
           <button id="create-button">Create Task</button>
           <button id="cancel-button" style="margin-left: 10px;">Cancel</button>
         </div>
@@ -109,6 +128,7 @@ export function openNewTaskModal(onCreate) {
     const title = document.getElementById("new-title").value.trim();
     const description = document.getElementById("new-description").value.trim();
     const status = document.getElementById("new-status").value;
+    const priority = document.getElementById("new-priority").value;
 
     if (!title) {
       alert("Please enter a title.");
@@ -121,10 +141,11 @@ export function openNewTaskModal(onCreate) {
     }
 
     onCreate({
-      id: Date.now(), // Simple ID generation based on timestamp
+      id: Date.now(),
       title,
       description,
       status,
+      priority,
     });
 
     backdrop.remove();
