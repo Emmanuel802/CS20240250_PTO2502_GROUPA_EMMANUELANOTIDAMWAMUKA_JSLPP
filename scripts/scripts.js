@@ -13,13 +13,21 @@ let tasks = [];
 document.addEventListener("DOMContentLoaded", async () => {
   showLoadingMessage();
 
-  try {
-    tasks = await fetchTasksFromAPI();
+  // Try to load tasks from localStorage first
+  const storedTasks = loadTasks();
+  if (storedTasks && Array.isArray(storedTasks) && storedTasks.length > 0) {
+    tasks = storedTasks;
     sortTasksByPriority();
-  } catch (err) {
-    showErrorMessage("Failed to fetch tasks. Please try again.");
-    console.error(err);
-    return;
+  } else {
+    try {
+      tasks = await fetchTasksFromAPI();
+      sortTasksByPriority();
+      saveTasks(tasks); // Save fetched tasks to localStorage
+    } catch (err) {
+      showErrorMessage("Failed to fetch tasks. Please try again.");
+      console.error(err);
+      return;
+    }
   }
 
   showAllTasks();
