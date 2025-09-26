@@ -68,4 +68,4 @@ The app ensures smooth functionality across both **desktop and mobile views**, f
 
 ## Deployed to Netlify
 
-- [Kanban-board-app-management](https://68d65e9c00963ea947e77b15--kanban-board-app-management.netlify.app/)
+- [Kanban-board-app-management](https://kanban-board-app-management.netlify.app/)
