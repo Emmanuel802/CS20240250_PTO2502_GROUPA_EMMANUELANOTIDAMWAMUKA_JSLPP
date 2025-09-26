@@ -101,7 +101,17 @@ function showAllTasks() {
   tasks.forEach((task) => {
     const div = document.createElement("div");
     div.className = "task-div";
-    div.textContent = `${task.title} ${getPrioritySymbol(task.priority)}`;
+    // Create title span
+    const titleSpan = document.createElement("span");
+    titleSpan.className = "task-title";
+    titleSpan.textContent = task.title;
+    // Create emoji span
+    const emojiSpan = document.createElement("span");
+    emojiSpan.className = "task-priority-emoji";
+    emojiSpan.textContent = getPrioritySymbol(task.priority);
+    // Add both spans to the div
+    div.appendChild(titleSpan);
+    div.appendChild(emojiSpan);
     div.onclick = () => openEditModal(task, handleSave, handleDelete);
     columns[task.status]?.appendChild(div);
   });
@@ -117,7 +127,7 @@ function showAllTasks() {
  */
 function getPrioritySymbol(priority) {
   if (priority === "high") return "🔴";
-  if (priority === "medium") return "🟠";
+  if (priority === "medium") return "🟡";
   if (priority === "low") return "🟢";
   return "";
 }
