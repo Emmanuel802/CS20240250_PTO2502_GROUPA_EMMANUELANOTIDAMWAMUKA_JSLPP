@@ -26,14 +26,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Add Task button
   const addTaskBtn = document.getElementById("add-task-btn");
-  if (addTaskBtn) {
-    addTaskBtn.addEventListener("click", () => {
-      openNewTaskModal((newTask) => {
-        tasks.push(newTask); // Add the new task to the tasks array
-        showAllTasks(); // Re-render to include the new task
-      });
+  addTaskBtn?.addEventListener("click", () => {
+    openNewTaskModal((newTask) => {
+      tasks.push(newTask);
+      sortTasksByPriority();
+      showAllTasks();
     });
-  }
+  });
 });
 
 /**
