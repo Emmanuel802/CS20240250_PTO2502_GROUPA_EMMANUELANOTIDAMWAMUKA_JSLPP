@@ -65,3 +65,7 @@ The app ensures smooth functionality across both **desktop and mobile views**, f
 - Drag & drop tasks between columns.
 - User accounts with authentication.
 - Custom categories/boards.
+
+## Deployed to Netlify
+
+- [Kanban-board-app-management](https://68d65e9c00963ea947e77b15--kanban-board-app-management.netlify.app/)
