@@ -222,6 +222,23 @@ body.dark-mode .theme-toggle {
   overflow: hidden; /* Prevents overflowed text/icons from showing */
 }
 
+.show-sidebar-btn {
+  display: none;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  bottom: 32px;
+  left: 0;
+  width: 56px;
+  height: 48px;
+  background-color: #635fc7;
+  border-radius: 0 100px 100px 0;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 15;
+}
+
 /* ===============
    Main Layout
 ================ */
