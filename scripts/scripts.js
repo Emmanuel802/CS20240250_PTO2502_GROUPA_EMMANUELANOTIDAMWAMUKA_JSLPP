@@ -93,14 +93,9 @@ function showAllTasks() {
   tasks.forEach((task) => {
     const div = document.createElement("div");
     div.className = "task-div";
-    div.textContent = task.title;
-    div.onclick = () => {
-      openEditModal(task, handleSave, handleDelete);
-    };
-
-    if (columns[task.status]) {
-      columns[task.status].appendChild(div);
-    }
+    div.textContent = `${task.title} ${getPrioritySymbol(task.priority)}`;
+    div.onclick = () => openEditModal(task, handleSave, handleDelete);
+    columns[task.status]?.appendChild(div);
   });
 
   updateColumnCounts();
@@ -108,24 +103,33 @@ function showAllTasks() {
 }
 
 /**
- * Handler called when a task is saved from the edit modal.
- * Updates the task in the tasks array and re-renders the task list.
- *
- * @param {Object} updatedTask - Task object with updated properties
+ * Get a symbol that represents task priority
+ * @param {"high"|"medium"|"low"} priority - Priority level of the task
+ * @returns {string} Emoji symbol for the priority
+ */
+function getPrioritySymbol(priority) {
+  if (priority === "high") return "🔴";
+  if (priority === "medium") return "🟠";
+  if (priority === "low") return "🟢";
+  return "";
+}
+
+/**
+ * Update a task in the tasks list and refresh the UI
+ * @param {Object} updatedTask - Task object with updated fields
  */
 function handleSave(updatedTask) {
   const index = tasks.findIndex((t) => t.id === updatedTask.id);
   if (index !== -1) {
     tasks[index] = updatedTask;
+    sortTasksByPriority();
     showAllTasks();
   }
 }
 
 /**
- * Handler called when a task is deleted from the edit modal.
- * Removes the task from the tasks array and re-renders the task list.
- *
- * @param {number} taskId - The id of the task to delete
+ * Remove a task by ID and refresh the UI
+ * @param {number} taskId - ID of the task to remove
  */
 function handleDelete(taskId) {
   tasks = tasks.filter((t) => t.id !== taskId);
@@ -133,7 +137,7 @@ function handleDelete(taskId) {
 }
 
 /**
- * Updates the task count display for each column (TODO, DOING, DONE).
+ * Update task counts in each status column header
  */
 function updateColumnCounts() {
   const countByStatus = (status) =>
@@ -148,4 +152,12 @@ function updateColumnCounts() {
   document.getElementById("doneText").textContent = `DONE (${countByStatus(
     "done"
   )})`;
+}
+
+/**
+ * Sort the tasks array in-place by priority: High → Medium → Low
+ */
+function sortTasksByPriority() {
+  const priorityOrder = { high: 0, medium: 1, low: 2 };
+  tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 }
