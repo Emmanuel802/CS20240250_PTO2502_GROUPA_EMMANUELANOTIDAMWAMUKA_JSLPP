@@ -524,10 +524,54 @@ select {
     display: none !important; /* Hide sidebar on tablets and smaller */
   }
 
-  .side-bar.show-sidebar {
-    display: flex !important;
-    position: fixed; /* Overlay on top of page */
-    height: auto;
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
+    z-index: 50;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 16px;
+  }
+
+  .close-mobile-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #ea5555;
+    padding: 0;
+    z-index: 51;
+  }
+
+  .board-btn {
+    margin-bottom: 15px;
+  }
+
+  .theme-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .show-sidebar-btn {
+    display: none;
   }
 
   #side-logo-div {
