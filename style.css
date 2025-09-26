@@ -177,7 +177,7 @@ body.dark-mode .column-head-div {
   color: #ffffff;
 }
 
-body.dark-mode .tasks-container {
+body.dark-mode .task-div {
   background-color: #2b2c37;
   color: #ffffff;
 }
@@ -201,6 +201,15 @@ body.dark-mode .modal-container {
 
 body.dark-mode .theme-toggle {
   background-color: #635fc7;
+  color: #ffffff;
+}
+
+body.dark-mode .modal {
+  background-color: #2b2c37;
+  color: #ffffff;
+}
+
+body.dark-mode label {
   color: #ffffff;
 }
 
