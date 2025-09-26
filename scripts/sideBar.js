@@ -18,6 +18,15 @@ const mobileThemeSwitch = document.getElementById("mobile-theme-switch");
 let isSidebarHidden = localStorage.getItem("sidebarHidden") === "true";
 
 function updateSidebarDisplay() {
+  if (window.innerWidth <= 1023) {
+    // Tablet/mobile: hide sidebar and buttons, let CSS handle layout
+    sidebar.style.display = "none";
+    showSidebarBtn.style.display = "none";
+    hideSidebarBtn.style.display = "none";
+    return;
+  }
+  // Desktop: JS controls sidebar
+  hideSidebarBtn.style.display = "block";
   if (isSidebarHidden) {
     sidebar.style.display = "none";
     showSidebarBtn.style.display = "block";
@@ -26,6 +35,11 @@ function updateSidebarDisplay() {
     showSidebarBtn.style.display = "none";
   }
 }
+
+// Listen for window resize to update sidebar display
+window.addEventListener("resize", updateSidebarDisplay);
+
+updateSidebarDisplay();
 
 hideSidebarBtn.addEventListener("click", () => {
   isSidebarHidden = true;
