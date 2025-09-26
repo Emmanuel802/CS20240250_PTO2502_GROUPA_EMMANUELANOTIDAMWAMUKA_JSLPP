@@ -59,7 +59,11 @@ updateSidebarDisplay();
 // Mobile Menu Logic
 // ======================
 logoMobile.addEventListener("click", () => {
-  mobileMenu.style.display = "block";
+  if (mobileMenu.style.display === "block") {
+    mobileMenu.style.display = "none";
+  } else {
+    mobileMenu.style.display = "block";
+  }
 });
 
 closeMobileMenuBtn.addEventListener("click", () => {
