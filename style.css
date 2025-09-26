@@ -367,6 +367,20 @@ header {
   font-weight: bold;
 }
 
+/* Spacing between task title and priority emoji */
+.task-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-title {
+  margin-right: 0.5em;
+}
+.task-priority-emoji {
+  font-size: 1.2em;
+  margin-right: 0.5em;
+}
+
 /* ===============
    Headings
 ================ */
