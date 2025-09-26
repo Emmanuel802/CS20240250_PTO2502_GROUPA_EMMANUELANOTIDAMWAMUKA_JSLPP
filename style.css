@@ -172,12 +172,6 @@ body.dark-mode .show-sidebar-btn {
   color: #ffffff;
 }
 
-/* Column containers */
-body.dark-mode .column-div {
-  background-color: #2b2c37;
-  color: #ffffff;
-}
-
 /* Column headers */
 body.dark-mode .column-head-div {
   color: #ffffff;
@@ -221,7 +215,6 @@ body.dark-mode .theme-toggle {
   border-radius: 0 100px 100px 0; /* Pill shape only on right side */
   height: 48px;
   width: 276px;
-  padding: 28px 12px 28px 50px;
   margin: 10px 0;
   font-size: 0.9375rem;
   font-weight: bold;
@@ -527,8 +520,8 @@ select {
 
 /******** Tablets ********/
 @media screen and (max-width: 1023px) {
-  .side-bar {
-    display: none; /* Hide sidebar on tablets and smaller */
+  .side-bar .show-sidebar-btn {
+    display: none !important; /* Hide sidebar on tablets and smaller */
   }
 
   .side-bar.show-sidebar {
